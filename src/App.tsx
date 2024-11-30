@@ -15,8 +15,21 @@ import {
 
 function App() {
   const router = createBrowserRouter([
-    { path: "/", element: <Landing /> },
-    { path: "/cart", element: <Cart /> },
+    {
+      path: "/",
+      element: <HomeLayout />,
+      children: [
+        { index: true, element: <Landing /> },
+        { path: "products", element: <Products /> },
+        { path: "products/:id", element: <SingleProduct /> },
+        { path: "cart", element: <Cart /> },
+        { path: "about", element: <About /> },
+        { path: "checkout", element: <Checkout /> },
+        { path: "orders", element: <Orders /> },
+      ],
+    },
+    { path: "/login", element: <Login /> },
+    { path: "/register", element: <Register /> },
   ]);
   return <RouterProvider router={router} />;
 }
