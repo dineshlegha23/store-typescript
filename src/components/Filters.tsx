@@ -4,6 +4,7 @@ import { ProductsResponseWithParams } from "@/utils";
 import FormInput from "./FormInput";
 import FormSelect from "./FormSelect";
 import FormRange from "./FormRange";
+import FormCheckbox from "./FormCheckbox";
 
 function Filters() {
   const { meta, params } = useLoaderData() as ProductsResponseWithParams;
@@ -43,6 +44,13 @@ function Filters() {
       {/* PRICE */}
       <FormRange label="price" name="price" defaultValue={Number(price)} />
 
+      {/* SHIPPING */}
+      <FormCheckbox
+        label="free shipping"
+        name="shipping"
+        defaultValue={shipping}
+      />
+
       <Button type="submit" size={"sm"} className="self-end mb-2">
         Search
       </Button>
@@ -53,7 +61,7 @@ function Filters() {
         variant={"outline"}
         className="self-end mb-2"
       >
-        Reset
+        <Link to={"/products"}>Reset</Link>
       </Button>
     </Form>
   );
