@@ -45,3 +45,8 @@ export type Pagination = {
   pageSize: number;
   total: number;
 };
+
+export type SingleProductResponse = {
+  data: Product;
+  meta: {};
+};

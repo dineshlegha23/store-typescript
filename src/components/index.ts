@@ -18,3 +18,5 @@ export { default as Filters } from "./Filters";
 export { default as Loading } from "./Loading";
 export { default as FormRange } from "./FormRange";
 export { default as FormCheckbox } from "./FormCheckbox";
+export { default as SelectProductColor } from "./SelectProductColor";
+export { default as SelectProductAmount } from "./SelectProductAmount";
