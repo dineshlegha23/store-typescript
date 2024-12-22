@@ -13,9 +13,12 @@ import {
   SingleProduct,
 } from "./pages";
 import { ErrorElement } from "./components";
+
 import { loader as landingLoader } from "./pages/Landing";
 import { loader as productsLoader } from "./pages/Products";
 import { loader as singleProductLoader } from "./pages/SingleProduct";
+
+import { action as registerUser } from "./pages/Register";
 
 function App() {
   const router = createBrowserRouter([
@@ -53,7 +56,12 @@ function App() {
       ],
     },
     { path: "/login", element: <Login />, errorElement: <Error /> },
-    { path: "/register", element: <Register />, errorElement: <Error /> },
+    {
+      path: "/register",
+      element: <Register />,
+      errorElement: <Error />,
+      action: registerUser,
+    },
   ]);
   return <RouterProvider router={router} />;
 }
