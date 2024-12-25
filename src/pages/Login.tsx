@@ -15,6 +15,26 @@ import { useAppDispatch } from "@/hooks";
 import { AxiosResponse } from "axios";
 import { toast } from "@/hooks/use-toast";
 
+export const action =
+  (store: ReduxStore): ActionFunction =>
+  async ({ request }): Promise<Response | null> => {
+    const formData = await request.formData();
+    const data = Object.fromEntries(formData);
+
+    try {
+      const response = await customFetch.post("/auth/local", data);
+      const username = response.data.user.username;
+      const jwt = response.data.jwt;
+      store.dispatch(loginUser({ username, jwt }));
+      return redirect("/");
+    } catch (error) {
+      console.log(error);
+      toast({ description: "Login Failed" });
+
+      return null;
+    }
+  };
+
 function Login() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -31,7 +51,7 @@ function Login() {
       navigate("/");
     } catch (error) {
       console.log(error);
-      toast({ description: "Login failed" });
+      toast({ description: "Login Failed" });
     }
   };
 

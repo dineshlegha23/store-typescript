@@ -33,6 +33,7 @@ const userSlice = createSlice({
         toast({ description: "Welcome demo user" });
         return;
       }
+      toast({ description: "Login Successful" });
     },
     logoutUser: (state) => {
       state.user = null;
