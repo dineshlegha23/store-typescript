@@ -9,8 +9,10 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { NavLink } from "react-router-dom";
 import { links } from "@/utils";
+import { useAppSelector } from "@/hooks";
 
 function LinksDropdown() {
+  const user = useAppSelector((state) => state.userState.user);
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild className="lg:hidden">
@@ -25,6 +27,9 @@ function LinksDropdown() {
         sideOffset={25}
       >
         {links.map((link) => {
+          const restrictedRoutes =
+            link.href === "checkout" || link.href === "orders";
+          if (restrictedRoutes && !user) return null;
           return (
             <DropdownMenuItem key={link.label}>
               <NavLink
