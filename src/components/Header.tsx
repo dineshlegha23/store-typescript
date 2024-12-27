@@ -1,6 +1,6 @@
 import { Button } from "./ui/button";
 import { Link, useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "@/hooks";
+import { useAppSelector } from "@/hooks";
 import { logoutUser } from "@/features/user/userSlice";
 import { clearCart } from "@/features/cart/cartSlice";
 import { useToast } from "@/hooks/use-toast";

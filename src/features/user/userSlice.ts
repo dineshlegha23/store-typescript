@@ -1,6 +1,5 @@
 import { toast } from "@/hooks/use-toast";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { json } from "stream/consumers";
 
 export type User = {
   username: string;
